@@ -30,6 +30,14 @@ RegisterCommand('unjail', function(source, args)
     end
 end, false)
 
+RegisterNetEvent("fryr:client:UnjailPlayer")
+AddEventHandler("fryr:client:UnJailPlayer", function(citizenid)
+    TriggerServerEvent("fryr:server:updatetime", citizenid, 0)
+    SetEntityCoords(PlayerPedId(), 1850.34, 2585.95, 45.67, false, false, false, false)
+    QBCore.Functions.Notify('Player with server id '..serverId..' has finished Jail Time', 'error', 10000)
+    print("Player with Citizenid " .. citizenid .. " Has finished Jail Time")
+end)
+
 
 RegisterNetEvent("fryr:client:FreePlayer")
 AddEventHandler("fryr:client:FreePlayer", function(citizenid)

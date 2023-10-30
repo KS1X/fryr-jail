@@ -44,6 +44,7 @@ Citizen.CreateThread(function()
                         local query = "UPDATE fryr_prison SET jailtime = ? WHERE citizenid = ?"
                         oxmysql:execute(query, {0, citizenid}, function(results)
                             print("Jailtime for citizenid " .. citizenid .. " updated to 0, player has finished their sentence")
+                            TriggerClientEvent("fryr:client:UnjailPlayer", citizenid)
                         end, function(error)
                             print("oxmysql error: " .. error)
                         end)
